@@ -7,7 +7,7 @@ LILIN Edge AI Facial Recognition Camera
 
 ```
 Syntax:
-http://<serverIP>/face_list?flist=log
+http://<serverIP:8592>/face_list?flist=log
 ```
 
 Return:
@@ -16,7 +16,7 @@ Return:
 ### Get Face Watch list
 ```
 Syntax:
-http://<serverIP>/face_list?flist=watch
+http://<serverIP:8592>/face_list?flist=watch
 ```
 
 Return:
