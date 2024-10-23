@@ -145,14 +145,67 @@ Return:
 ### Get Face Info from Denial List
 ```
 ```
-### Get Someone in the List
-```
-Syntax:
-http://<serverIP>/face_list?select=watch&face_name=00001
+# Get a Specific Person's Information from a List by UUID
+## Description
+This API is used to retrieve specific information of a person from a designated list using a unique identifier (UUID). The list type and the person's UUID must be provided. Upon successful query, detailed information of the person will be returned.
+
+## Request Parameters
+
+| Parameter   | Required   | Description                               |
+|-------------|------------|-------------------------------------------|
+| select      | Yes        | Specifies the list type to query (e.g., `vip`). |
+| face_name   | Yes        | Specifies the UUID of the person to query.      |
+
+## Response Parameters
+
+| Parameter           | Type   | Description                                           |
+|---------------------|--------|-------------------------------------------------------|
+| `FACE_COUNT`        | int    | The number of people in the list. (Always 1 for this query) |
+| `INFORMATION`       | array  | An array containing the detailed information of the person. |
+| `INDEX`             | int    | Index number.                                               |
+| `FR_UPDATE_DATE`    | string | The date when the information was last updated.             |
+| `FR_LIST_TYPE`      | string | The list type (e.g., `log`, `vip`, `watch`, `denial`).      |
+| `FR_BMP`            | string | The file name of the person's face image.                   |
+| `FR_SCHEDULE_S`     | string | Scheduled start time.                                       |
+| `FR_SCHEDULE_E`     | string | Scheduled end time.                                         |
+| `FR_OTHER`          | string | Other related information (e.g., address).                  |
+| `FR_DETECT_ENDTIME` | string | Detection end time.                                         |
+| `FR_FACE_NAME`      | string | The UUID of the person.                                     |
+| `FR_LAST_NAME`      | string | The last name of the person.                                |
+| `FR_FIRST_NAME`     | string | The first name of the person.                               |
+| `FR_SCORE`          | float  | The face recognition score.                                 |
+| `LIST_TYPE`         | string | The list type returned in the response.                     |
+
+## Syntax
+
+```bash
+http://<serverIP:8592>/face_list?select=vip&face_name=00005
 ```
 
-Return:
-{"FACE_COUNT":1,"INFORMATION":[{"INDEX":1,"TS":"","MOD_TS":"","RTIME":"","ACTION":"","sec_color_id":"","ACT_PARAM":"watch","THRESHOLD":"","ROI_X":"","ROI_Y":"","ROI_W":"","ROI_H":"","FR_X":"","FR_Y":"","FR_W":"","FR_H":"","FR_BMP":"2024_4_23_14_7_46_378_00001","ROI_BMP":"","COUNTRY":"","FR_USER":"","FR_PHONE":"","FR_ADDRESS":"","FR_PAYSTATUS":"","FR_EXIST":"","FR_SCHEDULE_S":"00:00","FR_SCHEDULE_E":"23:59","FR_OTHER":"","FR_DETECT_ENDTIME":"2200-12-30_23:59","face_name":"00001","user_name":"Visitorf00001","last_name":"","face_uuid":"a626a066-978a-49be","identification_score":"0.00","face_trackingID":"a626a066-978a-49be"}],"LIST_TYPE":"watch"}
+## Response Example
+
+```json=
+{
+    "FACE_COUNT": 1,
+    "INFORMATION": [
+        {
+            "INDEX": 1,
+            "FR_UPDATE_DATE": "2024-10-22 15:30:59",
+            "FR_LIST_TYPE": "vip",
+            "FR_BMP": "2024_10_22_15_30_59_661_00005",
+            "FR_SCHEDULE_S": "00:00",
+            "FR_SCHEDULE_E": "23:59",
+            "FR_OTHER": "32 Port Street, Jinhu Township, Kinmen County",
+            "FR_DETECT_ENDTIME": "2044-12-01_23:59",
+            "FR_FACE_NAME": "00005",
+            "FR_LAST_NAME": "Cheng",
+            "FR_FIRST_NAME": "Frank",
+            "FR_SCORE": "100.0"
+        }
+    ],
+    "LIST_TYPE": "vip"
+}
+```
 
 ### Get Face Engine Detail
 ```
