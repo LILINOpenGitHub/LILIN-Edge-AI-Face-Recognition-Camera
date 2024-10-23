@@ -39,7 +39,56 @@ http://<serverIP:8592>/face_list?flist=log
 ```
 
 Return:
-{"FACE_COUNT":2,"INFORMATION":[{"INDEX":1,"TS":"","MOD_TS":"2024-04-23 14:07:48:388","RTIME":"","ACTION":"","sec_color_id":"","ACT_PARAM":"watch","THRESHOLD":"","ROI_X":"","ROI_Y":"","ROI_W":"","ROI_H":"","FR_X":"","FR_Y":"","FR_W":"","FR_H":"","FR_BMP":"2024_4_23_14_7_47_890_00001","ROI_BMP":"","COUNTRY":"","FR_USER":"","FR_PHONE":"","FR_ADDRESS":"","FR_PAYSTATUS":"","FR_EXIST":"","FR_SCHEDULE_S":"","FR_SCHEDULE_E":"","FR_OTHER":"","FR_DETECT_ENDTIME":"","IN_USER":"","face_name":"00001","user_name":"Visitorf00001","last_name":"","face_uuid":"","identification_score":"98","face_trackingID":"0"},{"INDEX":2,"TS":"","MOD_TS":"2024-04-23 14:07:47:834","RTIME":"","ACTION":"","sec_color_id":"","ACT_PARAM":"watch","THRESHOLD":"","ROI_X":"","ROI_Y":"","ROI_W":"","ROI_H":"","FR_X":"","FR_Y":"","FR_W":"","FR_H":"","FR_BMP":"2024_4_23_14_7_47_283_00001","ROI_BMP":"","COUNTRY":"","FR_USER":"","FR_PHONE":"","FR_ADDRESS":"","FR_PAYSTATUS":"","FR_EXIST":"","FR_SCHEDULE_S":"","FR_SCHEDULE_E":"","FR_OTHER":"","FR_DETECT_ENDTIME":"","IN_USER":"","face_name":"00001","user_name":"Visitorf00001","last_name":"","face_uuid":"","identification_score":"98","face_trackingID":"0"}],"LIST_TYPE":"log"}
+```json=
+{
+    "FACE_COUNT": 3,
+    "INFORMATION": [
+        {
+            "INDEX": 1,
+            "FR_UPDATE_DATE": "2024-10-22 16:04:09",
+            "FR_LIST_TYPE": "watch",
+            "FR_BMP": "2024_10_22_16_4_9_497_00001",
+            "FR_SCHEDULE_S": "",
+            "FR_SCHEDULE_E": "",
+            "FR_OTHER": "",
+            "FR_DETECT_ENDTIME": "",
+            "FR_FACE_NAME": "00001",
+            "FR_LAST_NAME": "",
+            "FR_FIRST_NAME": "Visitorf00001",
+            "FR_SCORE": "99.6"
+        },
+        {
+            "INDEX": 2,
+            "FR_UPDATE_DATE": "2024-10-22 16:04:09",
+            "FR_LIST_TYPE": "watch",
+            "FR_BMP": "2024_10_22_11_16_9_497_00003",
+            "FR_SCHEDULE_S": "",
+            "FR_SCHEDULE_E": "",
+            "FR_OTHER": "",
+            "FR_DETECT_ENDTIME": "",
+            "FR_FACE_NAME": "00003",
+            "FR_LAST_NAME": "",
+            "FR_FIRST_NAME": "Visitorf00003",
+            "FR_SCORE": "99.7"
+        },
+        {
+            "INDEX": 3,
+            "FR_UPDATE_DATE": "2024-10-22 11:04:09",
+            "FR_LIST_TYPE": "watch",
+            "FR_BMP": "2024_10_22_11_4_9_497_00002",
+            "FR_SCHEDULE_S": "",
+            "FR_SCHEDULE_E": "",
+            "FR_OTHER": "",
+            "FR_DETECT_ENDTIME": "",
+            "FR_FACE_NAME": "00002",
+            "FR_LAST_NAME": "",
+            "FR_FIRST_NAME": "Visitorf00002",
+            "FR_SCORE": "99.7"
+        }
+    ],
+    "LIST_TYPE": "log"
+}
+```
 
 ### Get Face Watch list
 ```
@@ -57,7 +106,42 @@ Syntax:
 ```
 
 Return:
-{"FACE_COUNT":1,"INFORMATION":[{"INDEX":1,"TS":"","MOD_TS":"","RTIME":"","ACTION":"","sec_color_id":"","ACT_PARAM":"vip","THRESHOLD":"","ROI_X":"","ROI_Y":"","ROI_W":"","ROI_H":"","FR_X":"","FR_Y":"","FR_W":"","FR_H":"","FR_BMP":"2024_4_23_14_10_54_375_00003","ROI_BMP":"","COUNTRY":"","FR_USER":"林","FR_PHONE":"","FR_ADDRESS":"","FR_PAYSTATUS":"","FR_EXIST":"","FR_SCHEDULE_S":"00:00","FR_SCHEDULE_E":"23:59","FR_OTHER":"","FR_DETECT_ENDTIME":"2200-12-30_23:59","IN_USER":"林","face_name":"00003","user_name":"志玲","last_name":"林","face_uuid":"","identification_score":"100.0","face_trackingID":"9964094f-df62-41a0"}],"LIST_TYPE":"vip"}
+```json=
+{
+    "FACE_COUNT": 2,
+    "INFORMATION": [
+        {
+            "INDEX": 1,
+            "FR_UPDATE_DATE": "2024-10-22 15:25:40",
+            "FR_LIST_TYPE": "vip",
+            "FR_BMP": "2024_10_22_11_2_59_443_00003",
+            "FR_SCHEDULE_S": "00:00",
+            "FR_SCHEDULE_E": "23:59",
+            "FR_OTHER": "台北市松山區民生東路五段27巷10號",
+            "FR_DETECT_ENDTIME": "2044-12-01_23:59",
+            "FR_FACE_NAME": "00003",
+            "FR_LAST_NAME": "Chao",
+            "FR_FIRST_NAME": "Alan",
+            "FR_SCORE": "0.00"
+        },
+        {
+            "INDEX": 2,
+            "FR_UPDATE_DATE": "2024-10-22 15:30:59",
+            "FR_LIST_TYPE": "vip",
+            "FR_BMP": "2024_10_22_15_30_59_661_00005",
+            "FR_SCHEDULE_S": "00:00",
+            "FR_SCHEDULE_E": "23:59",
+            "FR_OTHER": "金門縣金湖鎮市港路32號",
+            "FR_DETECT_ENDTIME": "2044-12-01_23:59",
+            "FR_FACE_NAME": "00005",
+            "FR_LAST_NAME": "Cheng",
+            "FR_FIRST_NAME": "Frank",
+            "FR_SCORE": "100.0"
+        }
+    ],
+    "LIST_TYPE": "vip"
+}
+```
 
 ### Get someone in the list
 ```
