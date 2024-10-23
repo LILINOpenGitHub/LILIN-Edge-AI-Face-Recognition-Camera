@@ -259,7 +259,7 @@ This API is used to clear all list data without specifying a particular type. Up
 - **Success**: If all lists are successfully cleared, the server will return `OK`.
 
 ## Syntax
-```bash
+```
 http://<serverIP>/clean_face_list
 ```
 # Get Name List from a Specific List
@@ -285,11 +285,11 @@ This API is used to retrieve all names from a specified list type. By specifying
 
 ## Syntax
 
-```bash
+```
 http://<serverIP:8592>/face_list?flist=log&namelist
 ```
 
-```bash
+```
 http://<serverIP:8592>/face_list?flist=watch&namelist
 ```
 
