@@ -222,41 +222,46 @@ LicenseStatus=expiration:2024-6-14, hwids:IM0000ffc535fc60, customer:MERITLILIN_
 UnlockingKey=faceXeXbUncgyd9cJKHn+paOOUKlTEXP/4Q2+udnEBAX7RsSXf6uMV3QNLvYngJ4Pm4nI/1rTjwzpdT5B8LZxyTJJZPhdadEsDuCXnAA4AUBU7hEii6ZBv/P4nKw0XtAyaEylPBHFAg8xj18bpMIxmrsAYRbi9v2wapkicFMUNXmODk=
 ModeName=mod001
 
-## Delete Face event lists
-### Delete all Face lists
+# Delete Specific Person
+
+## Description
+
+This API is used to clear the data of a specified list. You can specify the type of list to be cleared, such as `log`. Upon successful deletion, a confirmation message will be returned.
+
+## Request Parameters
+
+| Parameter | Required  | Description                        |
+|-----------|-----------|------------------------------------|
+| clean     | Yes       | Specifies the list type to be cleaned (e.g., `log`). |
+
+## Response Format
+
+- **Success**: If the list is successfully cleared, the server will return `Clean OK`.
+- **Failure**: If the list clearing fails, the server will return `Clean Fail`.
+
+## Syntax
+
+```bash
+http://<serverIP:8592>/face_list?clean=log
 ```
-Syntax:
+
+```bash
+http://<serverIP:8592>/face_list?clean=denial
+```
+
+# Clean All Lists
+## Description
+
+This API is used to clear all list data without specifying a particular type. Upon successful deletion, a confirmation message will be returned.
+
+## Response Format
+
+- **Success**: If all lists are successfully cleared, the server will return `OK`.
+
+## Syntax
+```bash
 http://<serverIP>/clean_face_list
 ```
-
-Return:
-Clean OK
-### Delete the Face Log list
-```
-Syntax:
-http://<serverIP>/set_search_info?clean=log
-```
-
-Return:
-Clean OK
-### Delete the Face Watch list
-
-```
-Syntax:
-http://<serverIP>/set_search_info?clean=watch
-```
-
-Return:
-Clean OK
-
-### Delete the Face VIP list
-```
-Syntax:
-http://<serverIP>/set_search_info?clean=vip
-```
-
-Return:
-Clean OK
 # Get Name List from a Specific List
 ## Description
 This API is used to retrieve all names from a specified list type. By specifying the list type, the API will return only the names within that list.
