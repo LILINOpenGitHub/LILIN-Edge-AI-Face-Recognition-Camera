@@ -204,7 +204,59 @@ http://<serverIP>/set_search_info?clean=vip
 
 Return:
 Clean OK
+# Get Name List from a Specific List
+## Description
+This API is used to retrieve all names from a specified list type. By specifying the list type, the API will return only the names within that list.
 
+## Request Parameters
+
+| Parameter   | Required   | Description                       |
+|-------------|------------|-----------------------------------|
+| `flist`     | Yes        | Specifies the list type to query. |
+| `namelist`  | Yes        | Indicates that only the name list will be returned. |
+
+## Response Parameters
+
+| Parameter       | Type   | Description                               |
+|-----------------|--------|-------------------------------------------|
+| `NAME_COUNT`    | int    | The total number of names in the list.    |
+| `INFORMATION`   | array  | An array containing the name information. |
+| `FR_LAST_NAME`  | string | The last name of the individual.          |
+| `FR_FIRST_NAME` | string | The first name of the individual.         |
+| `LIST_TYPE`     | string | The type of the list that is returned.    |
+
+## Syntax
+
+```bash
+http://<serverIP:8592>/face_list?flist=log&namelist
+```
+
+```bash
+http://<serverIP:8592>/face_list?flist=watch&namelist
+```
+
+## Response Example
+
+```json=
+{
+    "NAME_COUNT": 3,
+    "INFORMATION": [
+        {
+            "FR_LAST_NAME": "Chao",
+            "FR_FIRST_NAME": "Alan"
+        },
+        {
+            "FR_LAST_NAME": "Kao",
+            "FR_FIRST_NAME": "Dora"
+        },
+        {
+            "FR_LAST_NAME": "Tsui",
+            "FR_FIRST_NAME": "Judy"
+        }
+    ],
+    "LIST_TYPE": "log"
+}
+```
 ### Delete items of an Face list
 ```
 Syntax:
@@ -264,7 +316,7 @@ http://<serverIP>/upload_face_licensekey
 NOTE: This command must be used via POST with the iengine.lic file attached. Note: The file name needs to be iengine.lic
 
 
-## Import & export lists
+## Import & Export Lists
 ### Import a CSV file into wach list and vip list.
 ```
 Syntax:
