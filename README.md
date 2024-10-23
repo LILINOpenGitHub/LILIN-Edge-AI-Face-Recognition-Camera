@@ -1,4 +1,4 @@
-# LILIN-Edge-AI-Facial-Recognition-Camera TTT
+# LILIN-Edge-AI-Facial-Recognition-Camera
 LILIN Edge AI Facial Recognition Camera
 
 # Get Data from a Specific List
