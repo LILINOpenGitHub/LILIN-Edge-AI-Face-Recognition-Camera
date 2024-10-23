@@ -34,8 +34,7 @@ This API is used to retrieve detailed information for all individuals within a s
 
 ### Get Face log list
 
-```
-Syntax:
+```bash
 http://<serverIP:8592>/face_list?flist=log
 ```
 
