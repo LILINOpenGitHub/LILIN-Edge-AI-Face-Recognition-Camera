@@ -34,7 +34,7 @@ This API is used to retrieve detailed information for all individuals within a s
 
 ### Get Face log list
 
-```bash
+```
 http://<serverIP:8592>/face_list?flist=log
 ```
 
@@ -53,7 +53,7 @@ Return:
 ### Get Face VIP list
 ```
 Syntax:
-http://<serverIP>/face_list?flist=vip
+[http://<serverIP>/face_list?flist=vip](http://<serverIP:8592>/face_list?flist=vip)
 ```
 
 Return:
