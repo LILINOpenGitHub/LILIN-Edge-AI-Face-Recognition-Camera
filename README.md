@@ -178,7 +178,7 @@ This API is used to retrieve specific information of a person from a designated 
 
 ## Syntax
 
-```bash
+```
 http://<serverIP:8592>/face_list?select=vip&face_name=00005
 ```
 
@@ -207,7 +207,7 @@ http://<serverIP:8592>/face_list?select=vip&face_name=00005
 }
 ```
 
-### Get Face Engine Detail
+### Get Face Recognition Engine Detail
 ```
 Syntax:
 http://<serverIP>/server
@@ -241,11 +241,11 @@ This API is used to clear the data of a specified list. You can specify the type
 
 ## Syntax
 
-```bash
+```
 http://<serverIP:8592>/face_list?clean=log
 ```
 
-```bash
+```
 http://<serverIP:8592>/face_list?clean=denial
 ```
 
@@ -355,7 +355,7 @@ NOTE: This command must be used via POST with first and last name appended. Note
 Return:
 OK
 
-### Add VIP name and image
+### Add VIP Name and Image
 ```
 Syntax:
 http://<serverIP>/upload_face_img
@@ -365,7 +365,7 @@ NOTE: This command must be used via POST, appending the image file and first and
 . Note: The image file must be in base64 format. Note: The Additional format is Json
 
 
-### Added face recognition iengine.lic
+### Added Face Recognition iengine.lic
 ```
 Syntax:
 http://<serverIP>/upload_face_licensekey
@@ -375,7 +375,7 @@ NOTE: This command must be used via POST with the iengine.lic file attached. Not
 
 
 ## Import & Export Lists
-### Import a CSV file into wach list and vip list.
+### Import a CSV File into Watch List and VIP List.
 ```
 Syntax:
 http://<serverIP>/import_face_list
@@ -389,7 +389,7 @@ Syntax:
 http://<serverIP>/face_list?download=ALL
 ```
 
-### Export a CSV file from Face log list
+### Export a CSV File from the List of Face Log
 ```
 Syntax:
 http://<serverIP>/face_list?download=log
