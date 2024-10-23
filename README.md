@@ -1,7 +1,36 @@
 # LILIN-Edge-AI-Facial-Recognition-Camera
 LILIN Edge AI Facial Recognition Camera
 
-## Get Face event list
+# Get Data from a Specific List
+## Description
+This API is used to retrieve detailed information for all individuals within a specified list. You can define the type of list to query, and the API will return comprehensive details for every person in that list.
+
+## Request Parameters
+
+| Parameter   | Required   | Description                                 |
+|-------------|------------|---------------------------------------------|
+| flist       | Yes        |Specifies the type of list to query (e.g., `vip`, `denial`).  |
+
+## Response Parameters
+
+| Parameter          | Type    | Description                           |
+|--------------------|---------|---------------------------------------|
+| `FACE_COUNT`       | int     | Total number of faces in the list.                                           |
+| `INFORMATION`      | array   | An array containing detailed information of individuals in the list.         |
+| `INDEX`            | int     | Index number of the individual in the list.                                  |
+| `FR_UPDATE_DATE`   | string  | The date and time the individual's data was last updated.                    |
+| `FR_LIST_TYPE`     | string  | The type of list the individual belongs to (e.g., `vip`, `denial`, `watch`). |
+| `FR_BMP`           | string  | Unique identifier for the individual's image file.                           |
+| `FR_SCHEDULE_S`    | string  | Start time of the individual's schedule, if applicable.                      |
+| `FR_SCHEDULE_E`    | string  | End time of the individual's schedule, if applicable.                        |
+| `FR_OTHER`         | string  | Additional information about the individual, if any.                         |
+| `FR_DETECT_ENDTIME`| string  | Time the individual was last detected, if applicable.                        |
+| `FR_FACE_NAME`     | string  | Internal face ID or name associated with the individual.                     |
+| `FR_LAST_NAME`     | string  | The last name of the individual (if available).                              |
+| `FR_FIRST_NAME`    | string  | The first name of the individual (if available).                             |
+| `FR_SCORE`         | string  | Face recognition score indicating the match confidence.                      |
+| `LIST_TYPE`        | string  | Type of the list from which the data is returned (e.g., `log`).              |
+
 
 ### Get Face log list
 
