@@ -344,7 +344,7 @@ NOTE: This command must be used via POST with first and last name appended. Note
 Return:
 0
 
-### Move watch list data to vip list
+### Move Watch List Data to VIP List
 ```
 Syntax:
 http://<serverIP>/move_watch_or_log_to_vip
