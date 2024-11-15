@@ -34,18 +34,38 @@ This API is used to retrieve detailed information for all individuals within a s
 ```bash
 http://<serverIP:8592>/face_list?flist=log
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?flist=log"
+```
+
 ### Get Face Info from Watch List
 ```bash
 http://<serverIP:8592>/face_list?flist=watch
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?flist=watch"
+```
+
 ### Get Face Info from VIP List
 ```bash
 http://<serverIP:8592>/face_list?flist=vip
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?flist=vip"
+```
+
 ### Get Face Info from Denial List
 ```bash
 http://<serverIP:8592>/face_list?flist=denial
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?flist=denial"
+```
+
 ## Response Example
 ### Response Example for Log List
 ```json=
@@ -218,22 +238,43 @@ This API is used to retrieve all names from a specified list type. By specifying
 | `LIST_TYPE`     | string | The type of the list that is returned.    |
 
 ## Syntax
+
 ### Get All Names from Log List
 ```bash
 http://<serverIP:8592>/face_list?flist=log&namelist
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?flist=log&namelist"
+```
+
 ### Get All Names from Watch List
 ```bash
 http://<serverIP:8592>/face_list?flist=watch&namelist
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?flist=watch&namelist"
+```
+
 ### Get All Names from VIP List
 ```bash
 http://<serverIP:8592>/face_list?flist=vip&namelist
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?flist=vip&namelist"
+```
+
 ### Get All Names from Denial List
 ```bash
 http://<serverIP:8592>/face_list?flist=denial&namelist
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?flist=denial&namelist"
+```
+
 ## Response Example
 ### Response Example for Log List
 ```json=
@@ -331,8 +372,13 @@ This API is used to retrieve specific information of a person from a designated 
 
 ## Syntax
 
+
 ```bash
 http://<serverIP:8592>/face_list?select=vip&face_name=00113
+```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?select=vip&face_name=00113"
 ```
 
 ## Response Example
@@ -359,7 +405,6 @@ http://<serverIP:8592>/face_list?select=vip&face_name=00113
   "LIST_TYPE": "vip"
 }
 ```
-
 
 
 # Get Specific Person(s)' Information from a List by Name
@@ -409,7 +454,7 @@ curl -X POST http://<serverIP:8592>/face_list_batch \
 
 ```json=
 {
-  "TOTAL_COUNT": 11,
+  "TOTAL_COUNT": 2,
   "PAGE_COUNT": 2,
   "INFORMATION": [
     {
@@ -490,7 +535,7 @@ curl -X POST http://<serverIP:8592>/face_search \
 ## Response Example
 ```json=
 {
-  "TOTAL_COUNT": 5,
+  "TOTAL_COUNT": 1,
   "PAGE_COUNT": 1,
   "INFORMATION": [
     {
@@ -512,6 +557,48 @@ curl -X POST http://<serverIP:8592>/face_search \
 }
 
 ```
+# Add Person to List
+## Description
+
+This API is used to add a person to a specified list. You need to provide a portrait image, first name, last name (optional), and the list type. The list type can be VIP, Watch, or Denial list.
+
+## Request Parameters
+
+| Parameter   | Required | Description                                              |
+|-------------|----------|----------------------------------------------------------|
+| file        | Yes      | The image file to be uploaded, in Base64-encoded format. |
+| firstName   | Yes      | The first name of the person.                            |
+| lastName    | No       | The last name of the person.                             |
+| list_type   | Yes      | The list type to which the person will be added (e.g., `vip`, `watch`, `denial`). |
+
+## Response Format
+
+Upon successfully adding the person to the list, the server will return `OK`.
+
+## Syntax
+
+```bash
+curl -X POST http://<serverIP:8592>/upload_face_img \
+    -u "<username>:<password>" \
+    -H "Content-Type: application/json" \
+    -H "If-Modified-Since: 0" \
+    -H "Cache-Control: no-cache" \
+    -H "Expect:" \
+    --data "@data.json"
+```
+
+### Sample `data.json` File
+
+```json=
+{
+    "file": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5ZDb...（Base64 string partially omitted）",
+    "firstName": "Jinping",
+    "lastName": "Xi",
+    "list_type": "denial"
+}
+```
+
+
 
 # Update Specific List Data
 ## Description
@@ -537,11 +624,46 @@ This API is used to update specific person data in a designated list. You can sp
 - **Failure**: If the update fails, the server will return `Fail`.
 
 ## Syntax
-```
+```bash
 http://<serverIP:8592>/face_list?update=watch&count=1&face_name=00108&face_first_name=依妍&face_last_name=孫&face_other=屏東縣屏東市中山路23號11樓&face_schedule_s=00:00&face_schedule_e=23:59&face_detect_endtime=2044-12-01_23:59
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?update=watch&count=1&face_name=00108" \
+     "&face_first_name=依妍" \
+     "&face_last_name=孫" \
+     "&face_other=屏東縣屏東市中山路23號11樓" \
+     "&face_schedule_s=00:00" \
+     "&face_schedule_e=23:59" \
+     "&face_detect_endtime=2044-12-01_23:59"
+```
 
-# Delete Specific Person
+# Delete Specific Person by UUID
+
+## Description
+This API deletes a specific person from a designated list using their unique `faceName` and the `group` they belong to. Upon successful deletion, the server will return `OK`.
+
+## Request Parameters
+
+| Parameter   | Required | Description                               |
+|-------------|----------|-------------------------------------------|
+| `faceName`  | Yes      | The unique ID (UUID) of the person to delete.  |
+| `group`     | Yes      | The group from which to delete the person (e.g., `vip`, `watch`). |
+
+## Response
+
+- **Success**: If the deletion is successful, the server will return `OK`.
+
+## Syntax
+```bash
+curl -X POST http://<serverIP:8592>/remove_image \
+    -u "<username>:<password>" \
+    -H "Content-Type: application/json" \
+    -d '{"faceName": "00132", "group": "watch"}'
+``` 
+
+
+# Delete Specific Person by Name
 ## Description
 
 This API is used to delete a specific person’s data from a designated list. You need to specify the list type (e.g., `vip` or `watch`) and provide the person's first name and last name for the deletion operation. 
@@ -564,7 +686,12 @@ This API is used to delete a specific person’s data from a designated list. Yo
 ```bash
 http://<serverIP:8592>/face_list?delete=denial&face_first_names=蕊黛&face_last_names=陳
 ```
-
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?delete=denial" \
+     "&face_first_names=蕊黛" \
+     "&face_last_names=陳"
+```
 
 # Clean Specific List
 ## Description
@@ -583,13 +710,39 @@ This API is used to clear the data of a specified list. You can specify the type
 - **Failure**: If the list clearing fails, the server will return `Clean Fail`.
 
 ## Syntax
-
+### Clean Log List
 ```bash
 http://<serverIP:8592>/face_list?clean=log
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?clean=log"
+```
+### Clean Watch List
+```bash
+http://<serverIP:8592>/face_list?clean=watch
+```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?clean=watch"
+```
 
+### Clean VIP List
+```bash
+http://<serverIP:8592>/face_list?clean=vip
+```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?clean=vip"
+```
+
+### Clean Denial List
 ```bash
 http://<serverIP:8592>/face_list?clean=denial
+```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?clean=denial"
 ```
 
 # Clean All Lists
@@ -604,6 +757,129 @@ This API is used to clear all list data without specifying a particular type. Up
 ## Syntax
 ```bash
 http://<serverIP>/clean_face_list
+```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP>/clean_face_list"
+```
+# Check Specific Name Count in VIP or Denial List
+## Description
+This API is used to check the number of occurrences of a specified name in either the VIP list or the Denial list. You must provide the first and last name to search for. Depending on the list type, the appropriate API should be called (`check_vip` for the VIP list or `check_denial` for the Denial list). The response will return the count of matching records in the list.
+
+## Request Parameters
+
+| Parameter  | Required | Description                          |
+|------------|----------|--------------------------------------|
+| firstName  | Yes      | The first name to check              |
+| lastName   | Yes      | The last name to check               |
+
+## Response Format
+
+The API will return the count of the specified name in the VIP or Denial list. The result will be a number that is either 0 or greater than 0.
+
+### Sample Response
+
+| Field   | Description                                        |
+|---------|----------------------------------------------------|
+| count   | The number of matching names in the specified list |
+
+## Syntax
+### Check Name Count in VIP List
+```bash
+curl -X POST http://<serverIP:8592>/check_vip \
+    -u "<username>:<password>" \
+    -H "Content-Type: application/json" \
+    -H "Cache-Control: no-cache" \
+    -H "If-Modified-Since: 0" \
+    -d '{"firstName": "寧歆", "lastName": "溫"}'
+```
+### Check Name Count in Denial List
+```bash
+curl -X POST http://<serverIP:8592>/check_denial \
+    -u "<username>:<password>" \
+    -H "Content-Type: application/json" \
+    -H "Cache-Control: no-cache" \
+    -H "If-Modified-Since: 0" \
+    -d '{"firstName": "蕊黛", "lastName": "陳"}'
+```
+
+# Move Person from Watch List to VIP or Denial List
+## Description
+This API is used to move a person from the Watch List to either the VIP List or the Denial List. Once the person is moved, they will no longer be part of the Watch List and will appear in the specified list.
+
+## Request Parameters
+
+| Parameter  | Required | Description                                |
+|------------|----------|--------------------------------------------|
+| firstName  | Yes      | First name of the person to move           |
+| lastName   | Yes      | Last name of the person to move            |
+| group      | Yes      | List type, fixed as `watch` (must always be 'watch') |
+
+## Response Format
+
+The API will return the result of the move operation. If successful, it will return `OK`.
+
+## Syntax
+
+### Move Person from Watch List to VIP
+```bash
+curl -X POST http://<serverIP:8592>/move_watch_to_vip \
+    -u "<username>:<password>" \
+    -H "Content-Type: application/json" \
+    -H "Cache-Control: no-cache" \
+    -H "If-Modified-Since: 0" \
+    -d '{"firstName": "依妍", "lastName": "孫", "group": "watch"}'
+```
+
+### Move Person from Watch List to Denial
+```bash
+curl -X POST http://<serverIP:8592>/move_watch_to_denial \
+    -u "<username>:<password>" \
+    -H "Content-Type: application/json" \
+    -H "Cache-Control: no-cache" \
+    -H "If-Modified-Since: 0" \
+    -d '{"firstName": "冠禎", "lastName": "陳", "group": "watch"}'
+```
+
+
+# Move Person from Face Log to VIP or Denial List
+## Description
+This API is used to move a person from the face log to either the VIP List or the Denial List. This feature allows the reclassification of individuals recorded in the log into different lists.
+
+## Request Parameters
+
+| Parameter  | Required | Description                                |
+|------------|----------|--------------------------------------------|
+| firstName  | Yes      | First Name of the person to move           |
+| lastName   | Yes      | Last Name of the person to move            |
+| group      | Yes      | List type, fixed as `log` (must always be 'log') |
+
+## Response Format
+
+Upon success, the API will return `OK`.
+
+## Syntax
+
+### Move Log Person to VIP List
+
+```bash
+curl -X POST http://<serverIP:8592>/move_log_to_vip \
+    -u "<username>:<password>" \
+    -H "Content-Type: application/json" \
+    -H "Cache-Control: no-cache" \
+    -H "If-Modified-Since: 0" \
+    -d '{"firstName": "Visitorf00001", "lastName": "", "group": "log"}'
+```
+
+### Move Log Person to Denial List
+
+```bash
+curl -X POST http://<serverIP:8592>/move_log_to_denial \
+    -u "<username>:<password>" \
+    -H "Content-Type: application/json" \
+    -H "Cache-Control: no-cache" \
+    -H "If-Modified-Since: 0" \
+    -d '{"firstName": "Visitorf00002", "lastName": "", "group": "log"}'
 ```
 
 # Upload Face Recognition License File
@@ -752,29 +1028,45 @@ The API will download the corresponding CSV file based on the specified list typ
 ```bash
 http://<serverIP:8592>/face_list?download=ALL
 ```
-
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?download=ALL"
+```
 ### Download Log List
 ```bash
 http://<serverIP:8592>/face_list?download=log
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?download=log"
 
+```
 ### Download Watch List
 ```bash
 http://<serverIP:8592>/face_list?download=watch
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?download=watch"
 
+```
 ### Download VIP List
 ```bash
 http://<serverIP:8592>/face_list?download=vip
 ```
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?download=vip"
 
+```
 ### Download Denial List
 ```bash
 http://<serverIP:8592>/face_list?download=denial
 ```
-
-Here’s the SDK documentation in English:
-
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/face_list?download=denial"
+```
 # Get Server Information
 
 ## Description
@@ -784,7 +1076,10 @@ This API retrieves system and license information from the server, such as the d
 ```bash
 http://<serverIP:8592>/server
 ```
-
+```bash
+curl -u <username>:<password> \
+     "http://<serverIP:8592>/server"
+```
 ## Response Parameters
 | Parameter         | Type   | Description                                                      |
 |-------------------|--------|------------------------------------------------------------------|
